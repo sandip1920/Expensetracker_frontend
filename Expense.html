@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Professional Expense Tracker - Manage your daily expenses with ease" />
+<title>Expense Tracker | Budget Management</title>
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+<!-- CSS -->
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="app-container">
+<header class="app-header">
+<h1 class="app-title">Expense Tracker</h1>
+<p class="app-subtitle">Track and manage your daily expenses with precision</p>
+</header>
+
+<section class="controls">
+<button id="loadHardcodedBtn" class="btn primary">Load Sample Data</button>
+<button id="loadApiBtn" class="btn secondary">Fetch from API</button>
+<button id="addExpenseBtn" class="btn tertiary">Add Expense</button>
+<button id="removeExpenseBtn" class="btn danger">Remove Expense</button>
+</section>
+
+<section id="statusMessage" class="status-message"></section>
+
+<!-- Add Expense Form Modal -->
+<div id="addExpenseModal" class="modal hidden">
+<div class="modal-content">
+<div class="modal-header">
+<h2>Add New Expense</h2>
+<button id="closeModalBtn" class="close-btn">&times;</button>
+</div>
+<form id="addExpenseForm" class="expense-form">
+<div class="form-group">
+<label for="expenseTitle">Title</label>
+<input type="text" id="expenseTitle" name="title" placeholder="e.g., Groceries" required />
+</div>
+<div class="form-group">
+<label for="expenseAmount">Amount</label>
+<input type="number" id="expenseAmount" name="amount" step="0.01" placeholder="e.g., 50.00" required />
+</div>
+<div class="form-group">
+<label for="expenseCategory">Category</label>
+<input type="text" id="expenseCategory" name="category" placeholder="e.g., Food" required />
+</div>
+<div class="form-actions">
+<button type="submit" class="btn primary">Add Expense</button>
+<button type="button" id="cancelBtn" class="btn secondary">Cancel</button>
+</div>
+</form>
+</div>
+</div>
+
+<!-- Remove Expense Form Modal -->
+<div id="removeExpenseModal" class="modal hidden">
+<div class="modal-content">
+<div class="modal-header">
+<h2>Remove Expense</h2>
+<button id="closeRemoveModalBtn" class="close-btn">&times;</button>
+</div>
+<form id="removeExpenseForm" class="expense-form">
+<div class="form-group">
+<label for="removeExpenseId">Expense ID</label>
+<input type="number" id="removeExpenseId" name="id" placeholder="e.g., 1" required />
+</div>
+<div class="form-group">
+<label for="removeExpenseTitle">Title</label>
+<input type="text" id="removeExpenseTitle" name="title" placeholder="e.g., Groceries" required />
+</div>
+<div class="form-actions">
+<button type="submit" class="btn danger">Remove Expense</button>
+<button type="button" id="cancelRemoveBtn" class="btn secondary">Cancel</button>
+</div>
+</form>
+</div>
+</div>
+
+<!-- Expense Details Modal -->
+<div id="expenseDetailModal" class="modal hidden">
+<div class="modal-content">
+<div class="modal-header">
+<h2>Expense Details</h2>
+<button id="closeDetailModalBtn" class="close-btn">&times;</button>
+</div>
+<div class="expense-details">
+<div class="detail-item">
+<span class="detail-label">Title:</span>
+<span id="detailTitle" class="detail-value"></span>
+</div>
+<div class="detail-item">
+<span class="detail-label">Category:</span>
+<span id="detailCategory" class="detail-value"></span>
+</div>
+<div class="detail-item">
+<span class="detail-label">Amount:</span>
+<span id="detailAmount" class="detail-value"></span>
+</div>
+<div class="detail-item">
+<span class="detail-label">Date:</span>
+<span id="detailDate" class="detail-value"></span>
+</div>
+</div>
+<div class="form-actions">
+<button type="button" id="closeDetailBtn" class="btn primary">Close</button>
+</div>
+</div>
+</div>
+
+<section class="expense-section">
+<div id="expenseList" class="expense-list"></div>
+</section>
+</div>
+<script src="api.js"></script>
+<script src="expense.js"></script>
+</body>
+</html>
